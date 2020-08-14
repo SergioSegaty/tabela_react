@@ -1,0 +1,32 @@
+.container {
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #4a5263;
+  border-radius: 15px 5px;
+  padding: 15px 10px;
+  box-shadow: 0px 10px 10px 5px #1d2025;
+  margin-top: 10px;
+}
+
+.table {
+  text-align: center;
+  display: inline-block;
+  border-collapse: collapse;
+  color: wheat;
+  justify-self: center;
+}
+
+.table th,
+td {
+  padding: 7px 5px;
+  border: 1px solid black;
+}
+
+input {
+  height: 30px;
+  width: 5%;
+}
