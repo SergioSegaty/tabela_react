@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import "./Table.css";
 import TodoInput from "../TodoInput/TodoInput";
 import TarefaDB from "../../js/IndexedDB-DAO";
-import ReactDOM from 'react-dom';
 
-const indexedDb = new TarefaDB('TarefaDb', 'TableTarefa');
+const indexedDb = new TarefaDB("TarefaDb", "TableTarefa");
 export default class Table extends Component {
   constructor(props) {
     super(props);
@@ -25,23 +24,25 @@ export default class Table extends Component {
       let itemsAtualizados = this.state.items;
       itemsAtualizados.push(novoItem);
       this.setState({
-        items: itemsAtualizados
+        items: itemsAtualizados,
       });
-      document.getElementById("inputStatus").value = '';
-      document.getElementById("inputDesc").value = '';
-      document.getElementById("inputData").value = '';
+      this.cleanInputs();
     };
-
-    this.removeitem = async (id) => {
-      await indexedDb.removeFromDB(id);
-      let itemsAtualizados = await indexedDb.getAll();
-      this.setState({
-        items: itemsAtualizados
-      })
-    }
   }
 
+  removeitem = async (id) => {
+    await indexedDb.removeFromDB(id);
+    let itemsAtualizados = await indexedDb.getAll();
+    this.setState({
+      items: itemsAtualizados,
+    });
+  };
 
+  cleanInputs() {
+    document.getElementById("inputStatus").value = "";
+    document.getElementById("inputDesc").value = "";
+    document.getElementById("inputData").value = "";
+  };
 
   render() {
     return (
@@ -57,14 +58,23 @@ export default class Table extends Component {
           </thead>
           <tbody>
             {this.state.items.map((item) => {
-              return (<tr key={item.id} id={item.id} ref={this.wrapper}>
-                <td>{item.status}</td>
-                <td>{item.desc}</td>
-                <td>{item.data}</td>
-                <td><button className='btn btn-danger' onClick={(e) => {
-                  this.removeitem(e.target.parentNode.parentNode.id);
-                }}>Apagar</button></td>
-              </tr>);
+              return (
+                <tr key={item.id} id={item.id} ref={this.wrapper}>
+                  <td>{item.status}</td>
+                  <td>{item.desc}</td>
+                  <td>{item.data}</td>
+                  <td>
+                    <button
+                      className="btn btn-danger"
+                      onClick={(e) => {
+                        this.removeitem(e.target.parentNode.parentNode.id);
+                      }}
+                    >
+                      Apagar
+                    </button>
+                  </td>
+                </tr>
+              );
             })}
           </tbody>
         </table>
