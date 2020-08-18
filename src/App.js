@@ -9,7 +9,7 @@ class App extends React.Component {
       <div className="App">
         <NavMenu></NavMenu>
         <header className="App-header">
-          <Table tarefas={this.props.tarefas}></Table>
+          <Table></Table>
         </header>
       </div>
     );
