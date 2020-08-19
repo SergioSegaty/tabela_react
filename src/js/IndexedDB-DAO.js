@@ -88,6 +88,52 @@ export default class TarefaDB {
         })
     }
 
+    updateById = async (item) => {
+        let targetId = parseInt(item.id);
+        let connection = await this.connection();
+
+        connection.onerror = () =>{
+            console.log('Deu bosta para atualizar');
+        }
+
+        connection.onsuccess = (e) => {
+            let db = e.target.result;
+
+            let request = db
+                        .transaction(this.tableName, 'readwrite')
+                        .objectStore(this.tableName)
+                        .get(targetId);
+
+            request.onerror = () => {
+                throw new Error('Não foi possível pegar o Objeto com Id de: ' + targetId);
+            }
+
+            request.onsuccess = (e) => {
+                let itemToUpdate = e.target.result;
+                
+                itemToUpdate = {
+                    ...itemToUpdate,
+                    desc: item.desc,
+                    status: item.status,
+                    data: item.data,
+                }
+
+                let requestUpdate = db
+                                    .transaction(this.tableName, 'readwrite')
+                                    .objectStore(this.tableName)
+                                    .put(itemToUpdate);
+
+                requestUpdate.onsuccess = () => {
+                    console.log('O item de id: ' + itemToUpdate.id + ' Foi atualizado com sucesso');
+                }
+
+                requestUpdate.onerror = () => {
+                    throw new Error('O item de id: ' + itemToUpdate.id + 'Não foi atualizado.');
+                }
+            }
+        }
+
+    }
 
     getAll = () => {
         return new Promise(async resolve => {

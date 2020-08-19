@@ -10,6 +10,7 @@
   padding: 15px 10px;
   box-shadow: 0px 10px 10px 5px #1d2025;
   margin-top: 10px;
+  overflow: hidden;
 }
 
 .table {
@@ -22,11 +23,65 @@
 
 .table th,
 td {
-  padding: 7px 5px;
+  padding: 10px 10px;
   border: 1px solid black;
 }
 
 input {
   height: 30px;
   width: 5%;
+}
+
+svg {
+  pointer-events: none;
+}
+
+.fa-edit{
+  transform: translate(1px, 0);
+}
+
+.btn {
+  padding: 5px 5px;
+  margin: 5px 5px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+.btn:active {
+  outline: none;
+  border: none;
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: #8796db
+  linear-gradient(180deg, #8b9ef0 0%, #6078e0 100% )
+}
+
+.btn-primary:hover {
+  background: #9badf1
+  linear-gradient(180deg, #b8c3eb 0%, #7083bd 100% )
+}
+
+.btn-success {
+  background: #70e970e8
+  linear-gradient(180deg, #70e970e8 0%, #3ac53ae8 100%);
+}
+
+.btn-success:hover {
+  background: #b0ee94;
+  background: linear-gradient(180deg, #b0ee94 0%, rgb(35, 240, 104) 100%);
+}
+
+
+.btn-danger {
+  background: #ca5656e8 linear-gradient(180deg, #ca5656e8 0%, #b13333e8 100%);
+  color:#ddffffe8;
+}
+
+.btn-danger:hover {
+  background: #e46d6de8 linear-gradient(180deg, #ca5656e8 0%, #e24b4be8 100%)
 }

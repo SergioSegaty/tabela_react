@@ -17,38 +17,4 @@ input:focus {
   border: none;
 }
 
-.btn {
-  padding: 5px 10px;
-  margin: 5px 5px;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-family: sans-serif;
-}
-
-.btn:active {
-  outline: none;
-  border: none;
-  transform: translateY(1px);
-}
-
-.btn-success {
-  background: #70e970e8
-  linear-gradient(180deg, #70e970e8 0%, #3ac53ae8 100%);
-}
-
-.btn-success:hover {
-  background: #b0ee94;
-  background: linear-gradient(180deg, #b0ee94 0%, rgb(35, 240, 104) 100%);
-}
-
-.btn-danger {
-  background: #ca5656e8 linear-gradient(180deg, #ca5656e8 0%, #b13333e8 100%);
-  color:#ddffffe8;
-}
-
-.btn-danger:hover {
-  background: #e46d6de8 linear-gradient(180deg, #ca5656e8 0%, #e24b4be8 100%)
-}
 
